@@ -1,5 +1,5 @@
 package game.components;
-
+import entregable.VentanaModal.*;
 import game.random.RandomGenerator;
 
 public class RumbleGame {
@@ -10,7 +10,8 @@ public class RumbleGame {
     private boolean loopGame = true;
     private int round = 0;
     private SegundaEvaluacionUI segundaEvaluacionUI;
-
+    private Player ganador=null;
+    
     public static RumbleGame getInstance() {
         return instance;
     }
@@ -22,14 +23,25 @@ public class RumbleGame {
     public Player getPlayerTwo() {
         return playerTwo;
     }
+    
+    public void setGanador(Player ganador) { //metodo agregado
+    	this.ganador= ganador;
+    }
+    
+    public Player getGanador() { //metodo agregado
+    	return ganador;
+    }
 
     private RumbleGame() {
 
     }
 
     public void init() {
-        playerOne = new Player(1L);
-        playerTwo = new Player(2L);
+        //playerOne = new Player(1L);
+        //playerTwo = new Player(2L);
+    	
+    	playerOne = new Player(1L,"/TPFinal/src/entregable/VentanaModal/castilloRojo-nofondo.png","Rojo");
+        playerTwo = new Player(2L,"/TPFinal/src/entregable/VentanaModal/castilloAzul-nofondo.png","Azul");
 
         Castle castleOne = new Castle();
         Castle castleTwo = new Castle();
@@ -104,10 +116,12 @@ public class RumbleGame {
         round++;
         if(playerOne.getCastle().getCastleLife() <= 0) {
             System.out.println("****         Ganador el Jugador Azul!!!         ****");
+            setGanador(playerTwo); //agregado
             loopGame = false;
         }
         if(playerTwo.getCastle().getCastleLife() <= 0) {
             System.out.println("****         Ganador el Jugador Rojo!!!         ****");
+            setGanador(playerOne); //agregado
             loopGame = false;
         }
         if(round == 100) {
@@ -124,8 +138,9 @@ public class RumbleGame {
                 throw new RuntimeException(e);
             }
         }
-        //TODO: Colocar una ventana modal con un mensaje que indique el resultado
-
-        System.exit(0);
+    
+        Ventana ventana= new Ventana(ganador);
+        ventana.setVisible(true);
+        //System.exit(0);
     }
 }

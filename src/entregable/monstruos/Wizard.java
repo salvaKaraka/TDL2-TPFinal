@@ -10,13 +10,11 @@ import entregable.ataques.*;
 
 
 public class Wizard extends Monster{
-	
 	final int LIFE = 400;
 	private boolean secondChance = true ; //segunda vida para mago
 	private List<Magic> skills = Arrays.asList (new Spell(), new Thunderbolt(),new Methylmercury()) ;
 	
 	public Wizard(String name) {
-		boolean secondChance = true ; //segunda vida para mago
 		this.life = LIFE;
 		this.monsterName = name;
 		this.activeSkill = new Spell();
@@ -27,6 +25,7 @@ public class Wizard extends Monster{
 	public void attack(Monster enemy) {
 		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
 	}
+	
 	@Override
 	public void onDamageReceive(Integer damage, Monster monster) { //modificacion de ondamagereceive
 		this.life= this.life - damage;
