@@ -24,6 +24,7 @@ public class Dragon extends Monster {
     @Override
     public void attack(Monster enemy) {
         int damage = this.activeSkill.damage(enemy);
+        damage= damage - enemy.shieldProtection(damage); //linea agregada para restar daño en caso de que el enemigo tenga escudo
         System.out.println("--     [" + this + "] ataca a [" + enemy + "] haciéndole " + damage + " de daño");
         enemy.onDamageReceive(damage, this);
     }

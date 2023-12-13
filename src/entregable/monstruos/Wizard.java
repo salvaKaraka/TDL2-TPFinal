@@ -23,7 +23,9 @@ public class Wizard extends Monster{
 	
 	@Override
 	public void attack(Monster enemy) {
-		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+		int damage = this.activeSkill.damage(enemy);
+		damage= damage - enemy.shieldProtection(damage);
+		enemy.onDamageReceive(damage, this);
 	}
 	
 	@Override

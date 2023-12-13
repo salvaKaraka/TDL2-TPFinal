@@ -42,8 +42,16 @@ public abstract class Monster {
 
     public List<Type> getTypes() {
         return types;
+    }   
+    
+    public int shieldProtection(int damage) { //metodo agregado
+    	int finaldamage= damage;
+    	if(this.getTypes().contains(Type.SHIELD)) {
+    		finaldamage = (int) (finaldamage - (finaldamage * 0.25));
+    	}
+    	return finaldamage;
     }
-
+    
     @Override
     public String toString() {
         return monsterName;
