@@ -19,8 +19,8 @@ public class Main {
         List<Monster> monstersOne = Arrays.asList(new IceDragon("IceDragon 1"),
         		new FireDragon("FireDragon 1"),
                 new Wizard("Mago 1"),
-                new Wizard("Mago 1"),
-                new Wizard("Mago 1"));
+                new Wizard("Mago 2"),
+                new Wizard("Mago 3"));
 
         //TODO ordenar el listado de monstruos que recibe el jugador uno
         rumbleGame.getPlayerOne().setMonsters(monstersOne);
