@@ -75,7 +75,7 @@ public class Ventana extends JFrame{
 	private void setearIconoModal(Player ganador) {
 		ImageIcon icono;
         if(ganador == null) {
-        	icono = new ImageIcon("/TPFinal/src/entregable/VentanaModal/empate.png"); 
+        	icono = new ImageIcon("src/entregable/VentanaModal/empate.png"); 
     		icono = new ImageIcon(icono.getImage().getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH));
         }else {
         	icono = ganador.getImagen();

@@ -40,8 +40,8 @@ public class RumbleGame {
         //playerOne = new Player(1L);
         //playerTwo = new Player(2L);
     	
-    	playerOne = new Player(1L,"/TPFinal/src/entregable/VentanaModal/castilloRojo-nofondo.png","Rojo");
-        playerTwo = new Player(2L,"/TPFinal/src/entregable/VentanaModal/castilloAzul-nofondo.png","Azul");
+    	playerOne = new Player(1L,"src/entregable/VentanaModal/castilloRojo-nofondo.png","Rojo");
+        playerTwo = new Player(2L,"src/entregable/VentanaModal/castilloAzul-nofondo.png","Azul");
 
         Castle castleOne = new Castle();
         Castle castleTwo = new Castle();
