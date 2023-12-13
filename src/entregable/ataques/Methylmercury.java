@@ -1,7 +1,7 @@
 package entregable.ataques;
 import game.components.Monster;
 
-public class Methylmercury implements Magic  {
+public class Methylmercury implements Poison {
 	private int dosis = 0;
 	
 	public int getDosis() {
