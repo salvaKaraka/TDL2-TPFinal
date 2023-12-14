@@ -66,7 +66,7 @@ public class Ventana extends JFrame{
 		if(ganador==null) {
 			info.setText("EMPATE");
 		} else {
-		info.setText("EL JUGADOR "+ ganador.getColor() +" GANA EL JUEGO");
+		info.setText("EL JUGADOR "+ ganador.getColor().toUpperCase() +" GANA EL JUEGO");
 		}
 		info.setFont(FuenteEditada);
 		//info.setForeground(Color.RED);
