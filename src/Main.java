@@ -10,6 +10,7 @@ import java.util.List;
 import entregable.monstruos.FireDragon;
 import entregable.monstruos.IceDragon;
 import entregable.monstruos.Wizard;
+import entregable.ordenar;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,7 +24,7 @@ public class Main {
                 new Wizard("Mago 3"));
 
         //TODO ordenar el listado de monstruos que recibe el jugador uno
-        rumbleGame.getPlayerOne().setMonsters(monstersOne);
+        rumbleGame.getPlayerOne().setMonsters(ordenar.ordenamientoPorDamage(monstersOne));
 
         List<Monster> monstersTwo = Arrays.asList();
 

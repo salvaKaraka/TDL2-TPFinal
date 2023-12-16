@@ -48,5 +48,9 @@ public abstract class Monster {
     public String toString() {
         return monsterName;
     }
-
+    
+    //Para comparar por daño, en base a cuanto daño se realiza a si mismo en un primer ataque.
+    public int getDamage() {
+    	return activeSkill.damage(this);
+    }
 }
