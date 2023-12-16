@@ -1,5 +1,6 @@
 package game.components;
 import entregable.VentanaModal.*;
+import entregable.excepciones.DrawException;
 import game.random.RandomGenerator;
 
 public class RumbleGame {
@@ -98,11 +99,21 @@ public class RumbleGame {
         castleOne.setLifeLabel(segundaEvaluacionUI.getVidasPlayerOneLabel());
         castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
     }
+    
+    private void verificarExcepcion(Player playerOne, Player playerTwo) throws DrawException  { //metodo agregado para excepciones
+    	//System.out.println("ENTRA A VERIFICAR!!!!!!");
+    	if (!(playerOne.getMonsterIterator().hasNext()) && !(playerTwo.getMonsterIterator().hasNext()) ) {
+    		throw new DrawException ("LOS JUGADORES SE QUEDARON SIN MONSTRUOS");
+    	}
+    }
 
-    public void nextRound() {
+    public void nextRound() throws DrawException{
         System.out.println();
         System.out.println();
         System.out.println("Siguiente Ronda numero: " + round);
+        
+        verificarExcepcion(playerOne, playerTwo); //agregado para excepciones
+        
         int jugador = RandomGenerator.getInstance().nextPlayer();
         System.out.println("Mueve primero el Jugador numero " + jugador);
         if(jugador == 1) {
@@ -128,14 +139,16 @@ public class RumbleGame {
             loopGame = false;
         }
     }
-
-    public void startGame() {
+    public void startGame(){
         while(loopGame) {
             try {
                 Thread.sleep(1500);
                 this.nextRound();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
+            } catch (DrawException ex) { //catch de empate
+            	Ventana ventana= new Ventana(ganador);
+            	ventana.setVisible(true);
             }
         }
     
