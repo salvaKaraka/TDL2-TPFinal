@@ -6,25 +6,29 @@ import game.components.*;
 
 public class Ventana extends JFrame{
 	
+	private static Ventana INSTANCE;
 	private JButton  boton= new JButton("CERRAR");
 	private JPanel panel_boton= new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JDialog modal= new JDialog(this,"ventana modal",true);
 	private JLabel info= new JLabel();
 	JPanel panel_label= new JPanel(new FlowLayout(FlowLayout.CENTER));
-	//private int ganador;
-	//holaa
 	Color ColorVerde = new Color(78, 182, 83);
-	Font FuenteEditada = new Font("Felix Titling",Font.BOLD /*| Font.ITALIC*/, 20);
+	Font FuenteEditada = new Font("Felix Titling",Font.BOLD, 20);
 	
-	public Ventana(Player ganador){
+	
+	private Ventana(Player ganador){
+		
 		super("VENTANA POP-UP");
-		//this.ganador=ganador;
-		
 		this.setearVentana();
-		
 		this.setearModal(ganador);
-		
 		this.add(modal);
+	}
+	
+	public static Ventana getVentana(Player ganador) {
+		if (INSTANCE == null) {
+			INSTANCE = new Ventana (ganador);
+		}
+		return INSTANCE;
 	}
 	
 	private void setearVentana() {
@@ -39,7 +43,6 @@ public class Ventana extends JFrame{
 	ActionListener activator= new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
-			//modal.setVisible(false);
 		}
 	};
 	

@@ -111,7 +111,7 @@ public class RumbleGame {
     		}	
     	}
     }
-    
+    //DPCdmU0tnRSJVPMb4laeRXVK0m556lbdiFo04OYtJyaBub4bCZ+4qkhic8OrMZ/PUfYGKhfJOkbeiTnF8UGkYw
     
     public void nextRound() throws DrawException{
         System.out.println();
@@ -154,12 +154,12 @@ public class RumbleGame {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             } catch (DrawException ex) { //catch de empate
-            	Ventana ventana= new Ventana(ganador);
+            	Ventana ventana= Ventana.getVentana(ganador);
             	ventana.setVisible(true);
             }
         }
     
-        Ventana ventana= new Ventana(ganador);
+        Ventana ventana= Ventana.getVentana(ganador);
         ventana.setVisible(true);
         //System.exit(0);
     }

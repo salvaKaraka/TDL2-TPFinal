@@ -16,12 +16,12 @@ public class Main {
 
         List<Monster> monstersOne = Arrays.asList(new EvilBeast("Demon1"),new FireDragon("FireDragon1"), new EvilBeast("Demon2"), new FireDragon("FireDragon2"));
 
-        //TODO ordenar el listado de monstruos que recibe el jugador uno
+        //ordenar el listado de monstruos que recibe el jugador uno
         rumbleGame.getPlayerOne().setMonsters(ordenar.ordenamientoPorDamage(monstersOne));
 
         List<Monster> monstersTwo = Arrays.asList(new EvilBeast("Demon1"),new FireDragon("FireDragon1"), new EvilBeast("Demon2"), new FireDragon("FireDragon2"));
 
-        //TODO ordenar el listado de monstruos que recibe el jugador dos
+        //ordenar el listado de monstruos que recibe el jugador dos
         rumbleGame.getPlayerTwo().setMonsters(ordenar.ordenamientoPorVida(monstersTwo));
 
         rumbleGame.startGame();
