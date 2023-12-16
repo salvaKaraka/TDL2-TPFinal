@@ -16,12 +16,13 @@ public abstract class Monster {
     public abstract void attack(Monster monster);
 
     public void onDamageReceive(Integer damage, Monster monster) {
-        this.life = this.life - damage;
+    	this.life = this.life - damage;
         if(this.life < 0) {
             this.life = 0;
         }
         System.out.println(this + " fue herido, queda con " + this.life + " puntos de vida");
     }
+
 
     public void move(PathBox oldPathBox, PathBox newPathBox) {
         oldPathBox.setMonster(null);

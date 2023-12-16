@@ -46,6 +46,12 @@ public class Player {
         this.monsters.forEach(monster -> monster.setPlayer(this));
 
     }
+    
+    
+    public Iterator<Monster> getMonsterIterator(){ //metodo agregado para excepcion
+    	return monsterIterator;
+    }
+    
 
     public void nextRound() {
         this.castle.nextRound(id, monsterIterator);

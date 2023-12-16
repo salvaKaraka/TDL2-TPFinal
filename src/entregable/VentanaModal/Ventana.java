@@ -6,7 +6,7 @@ import game.components.*;
 
 public class Ventana extends JFrame{
 	
-	private JButton  boton= new JButton("cerrar");
+	private JButton  boton= new JButton("CERRAR");
 	private JPanel panel_boton= new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JDialog modal= new JDialog(this,"ventana modal",true);
 	private JLabel info= new JLabel();
@@ -21,17 +21,19 @@ public class Ventana extends JFrame{
 		//this.ganador=ganador;
 		
 		this.setearVentana();
+		
 		this.setearModal(ganador);
 		
 		this.add(modal);
 	}
 	
 	private void setearVentana() {
+
+        this.setSize(400, 500);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setUndecorated(true); 
 		this.setLayout(new BorderLayout());
-		this.setSize(400, 500);
-		this.setLocation(450,100);
-		this.setUndecorated(true);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 	}
 	
 	ActionListener activator= new ActionListener() {
@@ -45,10 +47,9 @@ public class Ventana extends JFrame{
 		this.setearBoton();
 		this.setearLabel(ganador);
 		this.setearIconoModal(ganador);
-		
-		modal.getContentPane().setBackground(ColorVerde);
 		modal.setSize(400, 500);
-		modal.setLocation(450,100);
+		modal.setLocationRelativeTo(null);
+		modal.getContentPane().setBackground(ColorVerde);
 		modal.setUndecorated(true);
 		modal.add(panel_boton, BorderLayout.SOUTH);
 		modal.add(panel_label, BorderLayout.NORTH);

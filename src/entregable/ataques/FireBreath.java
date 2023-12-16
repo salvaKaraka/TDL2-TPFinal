@@ -13,6 +13,9 @@ public class FireBreath implements Fire {
 	        int damage = RandomGenerator.getInstance().calculateDamage(90, 150);
 	        if(monster.getTypes().contains(Type.COLD)) {
 	            damage = damage * 2;
+	        }else
+	        if(monster.getTypes().contains(Type.SHIELD)) {
+	        	damage =(int)(damage * 0.75);
 	        }
 	        return damage;
 	    }

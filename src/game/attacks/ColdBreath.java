@@ -11,6 +11,9 @@ public class ColdBreath implements Cold {
         int damage = RandomGenerator.getInstance().calculateDamage(90, 150);
         if(monster.getTypes().contains(Type.FIRE)) {
             damage = damage * 2;
+        }else
+        if(monster.getTypes().contains(Type.SHIELD)) {
+        	damage =(int)(damage * 0.75);
         }
         return damage;
     }

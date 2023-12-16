@@ -14,7 +14,7 @@ public class Dragon extends Monster {
     protected List<Attack> skills;
 
     public Dragon(String name, List<Attack> skills, Type primaryType, Type secondaryType) {
-        this.life = 1000;
+        this.life = 800;
         this.monsterName = name;
         this.activeSkill = skills.get(0);
         this.types = Arrays.asList(Type.BEAST, primaryType, secondaryType);

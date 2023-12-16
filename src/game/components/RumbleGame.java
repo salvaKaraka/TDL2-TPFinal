@@ -1,5 +1,6 @@
 package game.components;
 import entregable.VentanaModal.*;
+import entregable.excepciones.DrawException;
 import game.random.RandomGenerator;
 
 public class RumbleGame {
@@ -99,10 +100,26 @@ public class RumbleGame {
         castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
     }
 
-    public void nextRound() {
+    
+    private void verificarExcepcion(Player playerOne, Player playerTwo) throws DrawException  { //metodo agregado para excepciones
+    	//System.out.println("ENTRA A VERIFICAR!!!!!!");
+    	if (!(playerOne.getMonsterIterator().hasNext()) && !(playerTwo.getMonsterIterator().hasNext())){
+    		if(!playerOne.getCastle().getEastPath().haveMonster(playerOne.getId())  && !playerTwo.getCastle().getEastPath().haveMonster(playerTwo.getId())) {
+    			if(!playerOne.getCastle().getWestPath().haveMonster(playerOne.getId())  && !playerTwo.getCastle().getWestPath().haveMonster(playerTwo.getId())) {
+    				throw new DrawException ("LOS JUGADORES SE QUEDARON SIN MONSTRUOS");
+    			}
+    		}	
+    	}
+    }
+    
+    
+    public void nextRound() throws DrawException{
         System.out.println();
         System.out.println();
         System.out.println("Siguiente Ronda numero: " + round);
+        
+        verificarExcepcion(playerOne, playerTwo); //agregado para excepciones
+        
         int jugador = RandomGenerator.getInstance().nextPlayer();
         System.out.println("Mueve primero el Jugador numero " + jugador);
         if(jugador == 1) {
@@ -129,13 +146,16 @@ public class RumbleGame {
         }
     }
 
-    public void startGame() {
+    public void startGame(){
         while(loopGame) {
             try {
                 Thread.sleep(1500);
                 this.nextRound();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
+            } catch (DrawException ex) { //catch de empate
+            	Ventana ventana= new Ventana(ganador);
+            	ventana.setVisible(true);
             }
         }
     

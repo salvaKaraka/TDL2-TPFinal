@@ -11,7 +11,7 @@ import entregable.ataques.*;
 
 
 public class Wizard extends Monster{
-	final int LIFE = 400;
+	final int LIFE = 300;
 	private boolean secondChance = true ; //segunda vida para mago
 	private List<Attack> skills = Arrays.asList (new Spell(), new Thunderbolt(),new Methylmercury()) ;
 	
@@ -30,16 +30,19 @@ public class Wizard extends Monster{
 		else if(activeSkill instanceof Thunderbolt) {
 			this.activeSkill = skills.get(2);
 		}else this.activeSkill = skills.get(0);
+		
+		
 		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+	
 	}
 	
 	@Override
 	public void onDamageReceive(Integer damage, Monster monster) { //modificacion de ondamagereceive
 		this.life= this.life - damage;
 		if ((this.life < 100) &&(secondChance)) {
-			System.out.println("Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa esse expedita, a pariatur ullam illo adipisci iusto, voluptate, nobis ducimus delectus accusantium obcaecati quod assumenda tempora dicta eum similique vitae.");
+			System.out.println("Abadakadabra");
 			System.out.println(this.monsterName+ " se curó");
-			this.life = LIFE;
+			this.life = (int)(LIFE*0.5);
 			secondChance = false;
 	}
 		else if(this.life < 0) {
